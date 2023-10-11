@@ -1,3 +1,6 @@
+ /* CSS STYLE FOR ACTIVITY 1 */
+
+  /* -- Font Family -- */
 @font-face {
     font-family: IBM-Plex-Sans-Bold;
     src: url("../fonts/IBM_plex_sans_bold.ttf");
@@ -15,6 +18,8 @@
     src: url("../fonts/lobster_regular.ttf");
 }
 
+    
+    /* -- Overall Body -- */
     * {
         margin: 0;
         padding: 0;
@@ -22,6 +27,7 @@
         font-family: IBM-Plex-Sans-Regular;
     }
 
+    /* -- Login Panel -- */
     body {
         display: flex;
         justify-content: center;
