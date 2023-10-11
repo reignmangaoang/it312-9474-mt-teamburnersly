@@ -18,8 +18,5 @@ TORIANO, Joefrey D.
 Ms. Kasima Rose Mendoza
 
 # PROJECT DETAILS
-Midterm Project Activity - 1
-Module 4: Client-Side Web Scripting using JavaScript
-
-
-
+Midterm Project Activity - 2
+Module 4: Client-Side Web Scripting using DOM 
