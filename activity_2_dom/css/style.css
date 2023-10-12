@@ -16,35 +16,28 @@ body {
 h1 {
   text-align: center;
   margin-bottom: 40px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: center;
-    margin-bottom: 40px;
-    text-decoration: none;
-    font-weight: 400 ;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: center;
+  margin-bottom: 40px;
+  text-decoration: none;
+  font-weight: 400;
 }
 strong {
   color: orange;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 label {
   margin-right: 10px;
 }
-input[type="text"], 
-input[type="number"], 
-select, 
+input[type="text"],
+input[type="number"],
+select,
 button {
-    padding: 10px 15px;
-    margin: 5px 0;
-    border: 1px solid #e7880c;
-    border-radius: 5px;
-}
-
-button {
-    background-color: #ec9d0a;
-    color: #fff;
-    cursor: pointer;
-    border: none;
+  padding: 10px 15px;
+  margin: 5px 0;
+  border: 1px solid #e7880c;
+  border-radius: 5px;
 }
 
 button:hover {
@@ -77,19 +70,20 @@ button:hover {
   max-width: 100%;
   border-radius: 5px;
 }
-.load-more-btn {
-  display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #2c3e50;
-  color: #ecf0f1;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+
+.content-container {
+  display: flex;
+  flex-direction: column; /* Stacks children vertically */
+  min-height: 100vh; /* Ensures container takes up the full viewport height */
 }
 
-.load-more-btn:hover {
-  background-color: #34495e;
+#results {
+  flex: 1; /* Takes up all available space */
+  overflow-y: auto; /* Add a scrollbar if the content overflows */
+}
+
+#loadMoreBtn {
+  justify-content: center;
+  margin: auto;
+  display: none;
 }
