@@ -1,95 +1,6 @@
 /* Basic reset */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-html {
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-}
-.nav-bar {
-  position: absolute;
-  background-color: rgb(235, 114, 15);
-  top: 0;
-  right: -25rem;
-  height: 100vh;
-  width: 20rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.5s ease-out;
-}
-.toggle {
-  right: 0;
-  box-shadow: 1px 0 15px 2px rgba(0, 0, 0, 0.4);
-}
-.toggle-menu {
-  background-color: rgba(0, 0, 0, 0.2);
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  width: 2.5rem;
-  height: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.5rem;
-}
-.line {
-  width: 100%;
-  height: 4px;
-  border-radius:5px;
-  background-color: #fff;
-  transition: 0.2s ease-out;
-}
-.toggle .line1 {
-  background-color: #5d00f3;
-  transform: scale(0.9) rotateZ(-45deg) translate(-6px, 4px);
-}
-.toggle .line2 {
-  display: none;
-}
-.toggle .line3 {
-  background-color: #9413eb;
-  transform: scale(0.9) rotateZ(45deg) translate(-6px, -4px);
-}
-
-.toggle .toggle-menu {
-  background-color: white;
-}
-.nav-list {
-  list-style: none;
-}
-.nav-list-item {
-  text-align: center;
-  padding: 1rem 0;
-}
-.nav-link {
-  color: #fff;
-  font-size: 2.2rem;
-  text-decoration: none;
-  position: relative;
-  padding-bottom: 0.4rem;
-}
-.nav-link::before {
-  position: absolute;
-  content: '';
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #fff;
-  transform: scaleX(0);
-  transition: 0.4s ease-in-out;
-  transform-origin: left;
-}
-.nav-link:hover::before {
-  transform: scaleX(1);
+*{
+  font-family: Arial, sans-serif;
 }
 body {
     background-color: #f4f4f4;
@@ -100,26 +11,32 @@ body {
 }
 
 h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     margin-bottom: 40px;
+    text-decoration: none;
+    font-weight: 400 ;
+}
+strong {
+  color: orange;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 label {
     margin-right: 10px;
 }
-
 input[type="text"], 
 input[type="number"], 
 select, 
 button {
     padding: 10px 15px;
     margin: 5px 0;
-    border: 1px solid #ddd;
+    border: 1px solid #e7880c;
     border-radius: 5px;
 }
 
 button {
-    background-color: #007bff;
+    background-color: #ec9d0a;
     color: #fff;
     cursor: pointer;
     border: none;
