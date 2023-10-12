@@ -5,7 +5,6 @@
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
-
 body {
   background-color: #f4f4f4;
   color: #333;
@@ -17,27 +16,35 @@ body {
 h1 {
   text-align: center;
   margin-bottom: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    margin-bottom: 40px;
+    text-decoration: none;
+    font-weight: 400 ;
+}
+strong {
+  color: orange;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 label {
   margin-right: 10px;
 }
-
-input[type="text"],
-input[type="number"],
-select,
+input[type="text"], 
+input[type="number"], 
+select, 
 button {
-  padding: 10px 15px;
-  margin: 5px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border: 1px solid #e7880c;
+    border-radius: 5px;
 }
 
 button {
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-  border: none;
+    background-color: #ec9d0a;
+    color: #fff;
+    cursor: pointer;
+    border: none;
 }
 
 button:hover {
