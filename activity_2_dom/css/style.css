@@ -1,152 +1,88 @@
 /* Basic reset */
-*,
-*::before,
-*::after {
+* {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
-}
-html {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-}
-.nav-bar {
-  position: absolute;
-  background-color: rgb(235, 114, 15);
-  top: 0;
-  right: -25rem;
-  height: 100vh;
-  width: 20rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.5s ease-out;
-}
-.toggle {
-  right: 0;
-  box-shadow: 1px 0 15px 2px rgba(0, 0, 0, 0.4);
-}
-.toggle-menu {
-  background-color: rgba(0, 0, 0, 0.2);
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  width: 2.5rem;
-  height: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.5rem;
-}
-.line {
-  width: 100%;
-  height: 4px;
-  border-radius:5px;
-  background-color: #fff;
-  transition: 0.2s ease-out;
-}
-.toggle .line1 {
-  background-color: #5d00f3;
-  transform: scale(0.9) rotateZ(-45deg) translate(-6px, 4px);
-}
-.toggle .line2 {
-  display: none;
-}
-.toggle .line3 {
-  background-color: #9413eb;
-  transform: scale(0.9) rotateZ(45deg) translate(-6px, -4px);
+  font-family: Arial, sans-serif;
 }
 
-.toggle .toggle-menu {
-  background-color: white;
-}
-.nav-list {
-  list-style: none;
-}
-.nav-list-item {
-  text-align: center;
-  padding: 1rem 0;
-}
-.nav-link {
-  color: #fff;
-  font-size: 2.2rem;
-  text-decoration: none;
-  position: relative;
-  padding-bottom: 0.4rem;
-}
-.nav-link::before {
-  position: absolute;
-  content: '';
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #fff;
-  transform: scaleX(0);
-  transition: 0.4s ease-in-out;
-  transform-origin: left;
-}
-.nav-link:hover::before {
-  transform: scaleX(1);
-}
 body {
-    background-color: #f4f4f4;
-    color: #333;
-    font-size: 16px;
-    line-height: 1.5;
-    padding: 20px;
+  background-color: #f4f4f4;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 20px;
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 label {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
-input[type="text"], 
-input[type="number"], 
-select, 
+input[type="text"],
+input[type="number"],
+select,
 button {
-    padding: 10px 15px;
-    margin: 5px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+  padding: 10px 15px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 button {
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  border: none;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 /* Anime Results Styling */
 #results {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .anime-container {
-    background-color: #fff;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 800px;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 20px;
 }
 
 .anime-container h2 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .anime-container img {
-    max-width: 100%;
-    border-radius: 5px;
+  max-width: 100%;
+  border-radius: 5px;
+}
+.load-more-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.load-more-btn:hover {
+  background-color: #34495e;
 }

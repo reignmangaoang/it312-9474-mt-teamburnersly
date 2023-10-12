@@ -12,6 +12,13 @@ class AnimeSearcher {
       resultsDiv: document.getElementById("results"),
       searchBtn: document.getElementById("searchBtn"),
     };
+    this.currentPage = 1; // initialize with page 1
+    this.loadMoreBtn = document.getElementById("loadMoreBtn");
+    this.loadMoreBtn.innerText = "Load More Result";
+    this.loadMoreBtn.addEventListener("click", () => {
+      this.currentPage++;
+      this.search();
+    });
 
     this.elements.searchBtn.addEventListener("click", this.search.bind(this));
   }
@@ -44,9 +51,12 @@ class AnimeSearcher {
   }
 
   displayResults(data) {
-    this.elements.resultsDiv.innerHTML = "";
+
+
     if (!data.data || data.data.length === 0) {
-      this.elements.resultsDiv.innerHTML = "No Result";
+      if (this.currentPage === 1) {
+        this.elements.resultsDiv.innerHTML = "No Result";
+      }
       return;
     }
 
@@ -54,6 +64,10 @@ class AnimeSearcher {
       const animeCard = this.createAnimeCard(anime);
       this.elements.resultsDiv.appendChild(animeCard);
     });
+    // Append the Load More button if it's not already there
+    if (!this.elements.resultsDiv.contains(this.loadMoreBtn)) {
+      this.elements.resultsDiv.appendChild(this.loadMoreBtn);
+    }
   }
 
   getSearchURL() {
@@ -75,6 +89,7 @@ class AnimeSearcher {
         `season=${this.elements.seasonSelect.value}`,
     ]
       .filter(Boolean)
+      .concat(`page=${this.currentPage}`)
       .join("&");
 
     return `https://api.jikan.moe/v4/anime?${params}`;
@@ -92,9 +107,3 @@ class AnimeSearcher {
 }
 
 const animeSearcher = new AnimeSearcher();
-
-const toggleButton = document.querySelector('.toggle-menu');
-const navBar = document.querySelector('.nav-bar');
-toggleButton.addEventListener('click', () => {
-  navBar.classList.toggle('toggle');
-});
