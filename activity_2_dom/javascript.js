@@ -1,74 +1,78 @@
-// Reference to the input and results div
-const animeInput = document.getElementById("animeInput");
-const resultsDiv = document.getElementById("results");
+class AnimeSearcher {
+  constructor() {
+    this.config = {
+      animeInput: "animeInput",
+      genreSelect: "genreSelect",
+      typeSelect: "typeSelect",
+      yearInput: "yearInput",
+      ratingSelect: "ratingSelect",
+      statusSelect: "statusSelect",
+      countrySelect: "countrySelect",
+      seasonSelect: "seasonSelect",
+      resultsDiv: "results",
+      searchBtn: "searchBtn",
+    };
 
-// Function to display search results
-const displayResults = (data) => {
-  resultsDiv.innerHTML = "";
-  if (!data.data || data.data.length === 0) {
-    resultsDiv.innerHTML = "No Result";
-    return;
-  }
-  if (!data.data) {
-    console.error("Unexpected API response:", data);
-    return;
-  }
-
-  data.data.forEach((anime) => {
-    // Extracting title from URL
-    let title = anime.url.split("/anime/")[1].split("/")[1].replace(/_/g, " ");
-
-    // Extract the image URL
-    let imageUrl;
-    if (anime.images && anime.images.medium) {
-      imageUrl = anime.images.medium;
-    } else {
-      imageUrl = "path_to_default_image.jpg"; // fallback to a default image if not present
+    for (let key in this.config) {
+      this[key] = document.getElementById(this.config[key]);
     }
 
-    // Create elements for display
+    this.searchBtn.addEventListener("click", this.search.bind(this));
+  }
+
+  createAnimeEntry(anime) {
     const animeDiv = document.createElement("div");
+    animeDiv.classList.add("anime-container");
 
     const animeTitle = document.createElement("h2");
-    animeTitle.innerText = title;
-
-    // const animeImage = document.createElement("img");
-    // animeImage.src = imageUrl;
-
+    animeTitle.innerText = anime.title || "Unknown Title";
     animeDiv.appendChild(animeTitle);
-    // animeDiv.appendChild(animeImage);
 
-    resultsDiv.appendChild(animeDiv);
-  });
-};
-document.getElementById("searchBtn").addEventListener("click", function () {
-  const animeName = document.getElementById("animeInput").value.trim();
-  const genre = document.getElementById("genreSelect").value;
-  const type = document.getElementById("typeSelect").value;
-  const year = document.getElementById("yearInput").value;
-  const rating = document.getElementById("ratingSelect").value;
-  const status = document.getElementById("statusSelect").value;
-  const country = document.getElementById("countrySelect").value;
-  const season = document.getElementById("seasonSelect").value;
 
-  const baseURL = "https://api.jikan.moe/v4/anime?";
-  let queryParams = [];
+    return animeDiv;
+  }
 
-  if (animeName) queryParams.push(`q=${animeName}`);
-  if (genre) queryParams.push(`genres=${genre}`);
-  if (type) queryParams.push(`type=${type}`);
-  if (year) queryParams.push(`year=${year}`);
-  if (rating) queryParams.push(`rating=${rating}`);
-  if (status) queryParams.push(`status=${status}`);
-  if (country) queryParams.push(`country=${country}`);
-  if (season) queryParams.push(`season=${season}`);
+  displayResults(data) {
+    this.resultsDiv.innerHTML = "";
 
-  const finalURL = baseURL + queryParams.join("&");
+    if (!data.data || data.data.length === 0) {
+      this.resultsDiv.innerHTML = "No Result";
+      return;
+    }
 
-  fetch(finalURL)
-    .then((res) => res.json())
-    .then((data) => {
-      displayResults(data);
-    })
-    .catch((error) => console.log(error));
-});
+    data.data.forEach((anime) => {
+      this.resultsDiv.appendChild(this.createAnimeEntry(anime));
+    });
+
+
+    
+  }
+
+  getURL() {
+    const baseURL = "https://api.jikan.moe/v4/anime?";
+    let queryParams = [
+      this.animeInput.value.trim() && `q=${this.animeInput.value.trim()}`,
+      this.genreSelect.value && `genres=${this.genreSelect.value}`,
+      this.typeSelect.value && `type=${this.typeSelect.value}`,
+      this.yearInput.value && `year=${this.yearInput.value}`,
+      this.ratingSelect.value && `rating=${this.ratingSelect.value}`,
+      this.statusSelect.value && `status=${this.statusSelect.value}`,
+      this.countrySelect.value && `country=${this.countrySelect.value}`,
+      this.seasonSelect.value && `season=${this.seasonSelect.value}`,
+    ].filter(Boolean);
+    console.log(baseURL + queryParams.join("&"));
+    return baseURL + queryParams.join("&");
+  }
+
+  search() {
+    fetch(this.getURL())
+      .then((res) => res.json())
+      .then((data) => {
+        this.displayResults(data);
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  }
+}
+
+const searcher = new AnimeSearcher();
