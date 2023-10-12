@@ -26,16 +26,14 @@ class AnimeSearcher {
     animeDiv.appendChild(title);
 
     // Displaying the image
-    if (anime.image_url) {
-      const img = document.createElement("img");
-      img.src = anime.image_url;
-      img.alt = `Image of ${anime.title}`;
-      img.onerror = function () {
-        this.onerror = null;
-        this.src = "path_to_fallback_image.jpg";
-      };
-      animeDiv.appendChild(img);
-    }
+    const img = document.createElement("img");
+    img.src = anime.images.jpg.large_image_url;
+    img.alt = `Image of ${anime.title}`;
+    img.onerror = function () {
+      this.onerror = null;
+      this.src = "path_to_fallback_image.jpg";
+    };
+    animeDiv.appendChild(img);
 
     // Displaying all other details (as an example, add more as required)
     const synopsis = document.createElement("p");
@@ -63,7 +61,7 @@ class AnimeSearcher {
       this.elements.animeInput.value.trim() &&
         `q=${this.elements.animeInput.value.trim()}`,
       this.elements.genreSelect.value &&
-        `genre=${this.elements.genreSelect.value}`,
+        `genres=${this.elements.genreSelect.value}`,
       this.elements.typeSelect.value &&
         `type=${this.elements.typeSelect.value}`,
       this.elements.yearInput.value && `year=${this.elements.yearInput.value}`,
