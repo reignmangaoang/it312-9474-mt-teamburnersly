@@ -10,9 +10,16 @@
     <h1><strong>Anime</strong>Archives</h1>
 
     <!-- Anime Name -->
-    <label for="animeInput">Anime Name:</label>
-    <input type="text" id="animeInput" />
+    <div class="search-container">
+      <div class="search-bar">
+          <input type="text" id="animeInput" placeholder="Search anime...">
+          <div id="filterIcon">  Filter</div>
+      </div>
+      <button id="searchBtn">Search</button>
+      </div>
 
+    <div class="center-container">
+    <div id="filterSection" style="display: none;">
     <!-- Genre -->
     <label for="genreSelect">Genre:</label>
     <select id="genreSelect">
@@ -88,7 +95,8 @@
       <!-- Add seasons such as "Spring", "Summer", "Fall", "Winter" -->
     </select>
 
-    <button id="searchBtn">Search</button>
+  </div>
+  </div>
     <div id="results"></div>
     <div id="search_results" class="cards"></div>
     <button id="loadMoreBtn">Load More</button>

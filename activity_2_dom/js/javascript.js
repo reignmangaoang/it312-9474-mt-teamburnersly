@@ -160,3 +160,13 @@ class AnimeSearcher {
 }
 
 const animeSearcher = new AnimeSearcher();
+
+// Filter Script
+document.getElementById('filterIcon').addEventListener('click', function() {
+  let filters = document.getElementById('filterSection'); 
+  if (filters.style.display === 'none' || filters.style.display === '') {
+      filters.style.display = 'block';
+  } else {
+      filters.style.display = 'none';
+  }
+});
