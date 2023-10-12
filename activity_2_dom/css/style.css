@@ -110,11 +110,13 @@ button:hover {
   justify-content: center;
   cursor: pointer;
   transition: background-color 0.3s;
+  border-radius: 10px;
 }
 
 #filterIcon:hover {
-  background-color: #555;
+  background-color: #ff9e0d;
   border-radius: 10px;
+  color: white;
 }
 
 #searchBtn {
@@ -130,7 +132,8 @@ button:hover {
 }
 
 #searchBtn:hover {
-  background-color: #555;
+  background-color: #ff9100;
+  color: white;
 }
 #animeInput {
   flex: 1;
@@ -197,6 +200,11 @@ button:hover {
 
 #loadMoreBtn {
   justify-content: center;
+  width: auto;
+  height: auto;
   margin: auto;
   display: none;
+}
+#loadMoreBtn:hover {
+  background-color: orange;
 }
