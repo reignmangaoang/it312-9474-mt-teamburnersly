@@ -13,39 +13,42 @@ class AnimeSearcher {
       searchBtn: document.getElementById("searchBtn"),
     };
     this.currentPage = 1; // initialize with page 1
-    this.elements.loadMoreBtn = document.getElementById("loadMoreBtn");
-    this.elements.loadMoreBtn.addEventListener(
-      "click",
-      this.loadMore.bind(this)
-    );
-
+    this.updatePageDisplay();
+    this.elements.prevBtn = document.getElementById("prevBtn");
+    this.elements.nextBtn = document.getElementById("nextBtn");
+    this.elements.prevBtn.addEventListener("click", this.prevPage.bind(this));
+    this.elements.nextBtn.addEventListener("click", this.nextPage.bind(this));
     this.elements.searchBtn.addEventListener("click", this.search.bind(this));
   }
-  loadMore() {
-    // Store a reference to the last anime card before new data is loaded
-    const lastAnimeCard = this.elements.resultsDiv.lastElementChild;
-
+  prevPage() {
+    console.log("Current Page before decrement:", this.currentPage);
+    if (this.currentPage > 1) {
+        this.currentPage--;
+        console.log("Going to Page:", this.currentPage);
+        this.search();
+    }
+    console.log("Current Page after decrement:", this.currentPage);
+  }
+  nextPage() {
+    console.log("Current Page before increment:", this.currentPage);
     this.currentPage++;
-    this.search(true);
+    this.search();
+    console.log("Current Page after increment:", this.currentPage);
+  }
 
-    // Once new data is loaded, scroll to the last anime card from before
-    this.elements.resultsDiv.addEventListener(
-      "DOMNodeInserted",
-      (event) => {
-        window.scrollTo({
-          top: lastAnimeCard.getBoundingClientRect().bottom + window.scrollY,
-          behavior: "smooth",
-        });
-      },
-      { once: true }
-    );
+  updatePageDisplay() {
+    const displayElem = document.getElementById("currentPageDisplay");
+    if (displayElem) {
+        displayElem.textContent = this.currentPage;
+    }
   }
   appendResults(data) {
     if (!data.data || data.data.length === 0) {
-      this.elements.loadMoreBtn.style.display = "none"; // If no data, hide the "Load More" button
+      this.elements.resultsDiv.innerHTML = "No Result";
+      this.elements.prevBtn.style.display = "none"; // Hide prev button
+      this.elements.nextBtn.style.display = "none"; // Hide next button
       return;
     }
-
     data.data.forEach((anime) => {
       const animeCard = this.createAnimeCard(anime);
       this.elements.resultsDiv.appendChild(animeCard);
@@ -54,6 +57,7 @@ class AnimeSearcher {
 
   search(appendMode = false) {
     this.appendMode = appendMode;
+    console.log("Fetching data from:", this.getSearchURL());
 
     fetch(this.getSearchURL())
       .then((res) => res.json())
@@ -63,14 +67,9 @@ class AnimeSearcher {
       .catch((error) => console.log(error));
   }
 
-  createAnimeCard(anime) {
+createAnimeCard(anime) {
     const animeDiv = document.createElement("div");
-    animeDiv.classList.add("anime-container");
-
-    // Displaying the title
-    const title = document.createElement("h2");
-    title.innerText = anime.title || "Unknown Title";
-    animeDiv.appendChild(title);
+    animeDiv.classList.add("anime-card");
 
     // Displaying the image
     const img = document.createElement("img");
@@ -82,35 +81,50 @@ class AnimeSearcher {
     };
     animeDiv.appendChild(img);
 
-    // Displaying all other details (as an example, add more as required)
-    const synopsis = document.createElement("p");
-    synopsis.innerText = anime.synopsis || "No synopsis available.";
-    animeDiv.appendChild(synopsis);
+    // Displaying the title
+    const title = document.createElement("div");
+    title.classList.add("anime-title");
+    title.innerText = anime.title || "Unknown Title";
+    animeDiv.appendChild(title);
 
     return animeDiv;
-  }
+}
 
-  displayResults(data) {
-    // If the 'appendMode' is not set, then clear the results div.
-    if (!this.appendMode) {
-      this.elements.resultsDiv.innerHTML = "";
-    }
+    displayResults(data) {
+        // Clear the results div if appendMode is not set.
+        if (!this.appendMode) {
+            this.elements.resultsDiv.innerHTML = "";
+        }
 
-    // Check if there are results
-    if (!data.data || data.data.length === 0) {
-      this.elements.resultsDiv.innerHTML = "No Result";
-      this.elements.loadMoreBtn.style.display = "none";
-      return;
-    } else {
-      // If there are results, show the "Load More" button
-      this.elements.loadMoreBtn.style.display = "block";
-    }
+        // Display "No Result" if no data is available.
+        if (!data.data || data.data.length === 0) {
+            this.elements.resultsDiv.innerHTML = "No Result";
+            this.elements.prevBtn.style.display = "none"; // Hide prev button
+            this.elements.nextBtn.style.display = "none"; // Hide next button
+            return;
+        }
 
-    data.data.forEach((anime) => {
-      const animeCard = this.createAnimeCard(anime);
-      this.elements.resultsDiv.appendChild(animeCard);
-    });
-  }
+        if (this.currentPage === 1) {
+            this.elements.prevBtn.style.display = "none";
+        } else {
+            this.elements.prevBtn.style.display = "block";
+        }
+
+        if (data.data.length < 10) {
+            this.elements.nextBtn.style.display = "none";
+        } else {
+            this.elements.nextBtn.style.display = "block";
+        }
+        // Clear the results div if appendMode is not set.
+        if (!this.appendMode) {
+            this.elements.resultsDiv.innerHTML = "";
+        }
+        this.updatePageDisplay();
+        data.data.forEach((anime) => {
+            const animeCard = this.createAnimeCard(anime);
+            this.elements.resultsDiv.appendChild(animeCard);
+        });
+      }
 
   getSearchURL() {
     const params = [
@@ -136,37 +150,17 @@ class AnimeSearcher {
 
     return `https://api.jikan.moe/v4/anime?${params}`;
   }
-  setupInfiniteScroll() {
-    window.addEventListener("scroll", () => {
-      if (
-        window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - 50
-      ) {
-        // 50 is a threshold, adjust if needed
-        this.currentPage++;
-        this.search();
-      }
-    });
-  }
-  search() {
-    fetch(this.getSearchURL())
-      .then((res) => res.json())
-      .then((data) => {
-        this.displayResults(data);
-        console.log(data);
-      })
-      .catch((error) => console.log(error));
-  }
 }
+document.addEventListener("DOMContentLoaded", function() {
+  const animeSearcher = new AnimeSearcher();
 
-const animeSearcher = new AnimeSearcher();
-
-// Filter Script
-document.getElementById('filterIcon').addEventListener('click', function() {
-  let filters = document.getElementById('filterSection'); 
-  if (filters.style.display === 'none' || filters.style.display === '') {
-      filters.style.display = 'block';
-  } else {
-      filters.style.display = 'none';
-  }
+  // Filter Script
+  document.getElementById('filterIcon').addEventListener('click', function() {
+      let filters = document.getElementById('filterSection'); 
+      if (filters.style.display === 'none' || filters.style.display === '') {
+          filters.style.display = 'block';
+      } else {
+          filters.style.display = 'none';
+      }
+  });
 });
