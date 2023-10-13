@@ -6,42 +6,158 @@
   font-family: Arial, sans-serif;
 }
 body {
-  background-color: #f4f4f4;
-  color: #333;
-  font-size: 16px;
-  line-height: 1.5;
-  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #000000;
+  padding: 40px;
+  margin: 0;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 40px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  text-align: center;
-  margin-bottom: 40px;
-  text-decoration: none;
-  font-weight: 400;
+  color: #333;
+  font-weight: 750;
+  margin-bottom: 30px;
 }
 strong {
   color: orange;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 900;
+}
+form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 label {
-  margin-right: 10px;
+  display: none; 
 }
-input[type="text"],
-input[type="number"],
-select,
-button {
+
+input[type="text"], input[type="number"], select {
+  flex: 1;
   padding: 10px 15px;
-  margin: 5px 0;
-  border: 1px solid #e7880c;
-  border-radius: 5px;
+  box-sizing: border-box;
+  border: 2px solid #030303;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #a7a7a7;
+  min-width: 100px; 
+  color: rgb(0, 0, 0);
+}
+
+input[type="text"]::placeholder {
+  color: #aaa;
+}
+
+button {
+  display: block;
+  width: auto;
+  padding: 10px 20px;
+  margin: 20px 0;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #555;
+}
+
+#results, #search_results {
+  margin-top: 30px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #222;
+  border-radius: 10px;
+  height: 50px; 
+}
+
+#animeInput {
+  flex-grow: 0;
+  width: 400px;
+  height: 100%; 
+  border: none;
+  background-color: transparent; 
+  margin: 0 auto;
+  padding: 0 10px; 
+}
+
+#filterIcon {
+  height: 100%;
+  width: 15%;
+  display: flex;
+  color: rgb(243, 182, 13);
+  align-items: center; 
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 10px;
+}
+
+#filterIcon:hover {
+  background-color: #ff9e0d;
+  border-radius: 10px;
+  color: white;
+}
+
+#searchBtn {
+  padding: 10px 15px;
+  height: 50px; 
+  border: none;
+  color: orange;
+  border-radius: 10px;
+  background-color: #333333;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 15px;
+}
+
+#searchBtn:hover {
+  background-color: #ff9100;
+  color: white;
+}
+#animeInput {
+  flex: 1;
+  padding: 8px 15px;
+  border: none;
+  background-color: #333;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+#animeInput::placeholder {
+  color: #888;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px; 
+  border-radius: 15%;
+}
+
+#filterSection {
+  text-align: center; 
 }
 
 /* Anime Results Styling */
@@ -84,6 +200,11 @@ button:hover {
 
 #loadMoreBtn {
   justify-content: center;
+  width: auto;
+  height: auto;
   margin: auto;
   display: none;
+}
+#loadMoreBtn:hover {
+  background-color: orange;
 }
