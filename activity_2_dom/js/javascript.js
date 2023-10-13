@@ -153,6 +153,7 @@ class AnimeSearcher {
       .then((res) => res.json())
       .then((data) => {
         this.displayResults(data);
+        console.log(this.getSearchURL());
         console.log(data);
       })
       .catch((error) => console.log(error));
