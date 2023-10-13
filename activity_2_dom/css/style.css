@@ -165,46 +165,66 @@ button:hover {
   margin-top: 30px;
 }
 
-.anime-container {
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.anime-card {
+  display: inline-block;
+  width: 150px;
+  height: 250px;
+  margin: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.anime-card img {
+  width: 100%;
+  height: 80%; 
+  object-fit: cover;
+}
+
+.anime-title {
+  background-color: rgba(196, 196, 196, 0.6); 
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   text-align: center;
-  max-width: 800px;
+  padding: 5px;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.button-container {
+  display: flex;
   justify-content: center;
-  margin: auto;
-  margin-bottom: 20px;
 }
 
-.anime-container h2 {
-  margin-bottom: 10px;
-  text-align: center;
-}
 
-.anime-container img {
-  max-width: 100%;
+#prevBtn, #nextBtn {
+  padding: 10px 20px;
+  background-color: orange;
+  color: white;
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px; 
+  display: none;
+}
+
+
+#prevBtn:hover, #nextBtn:hover {
+  background-color: #0056b3; 
 }
 
 .content-container {
   display: flex;
-  flex-direction: column; /* Stacks children vertically */
-  min-height: 100vh; /* Ensures container takes up the full viewport height */
+  flex-direction: column; 
+  min-height: 100vh;
 }
 
 #results {
-  flex: 1; /* Takes up all available space */
-  overflow-y: auto; /* Add a scrollbar if the content overflows */
-}
-
-#loadMoreBtn {
-  justify-content: center;
-  width: auto;
-  height: auto;
-  margin: auto;
-  display: none;
-}
-#loadMoreBtn:hover {
-  background-color: orange;
+  flex: 1; 
+  overflow-y: auto; 
 }
