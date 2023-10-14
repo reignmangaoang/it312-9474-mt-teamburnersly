@@ -181,7 +181,7 @@ button:hover {
 
 .anime-card img {
   width: 100%;
-  /* Adjust the height here. Assume title area is approx. 50px. */
+  display: block;
   height: calc(100% - 40px); 
   object-fit: cover;
 }
@@ -217,7 +217,7 @@ button:hover {
   border-radius: 5px;
   cursor: pointer;
   margin: 0 10px; 
-  display: none;`
+  display: none;
 }
 
 
@@ -234,4 +234,44 @@ button:hover {
 #results {
   flex: 1; 
   overflow-y: auto; 
+}
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%; /* Could be more or less, depending on screen size */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+h1, h2, p {
+  margin-bottom: 10px;
 }

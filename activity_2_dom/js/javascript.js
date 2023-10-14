@@ -88,9 +88,59 @@ createAnimeCard(anime) {
     title.innerText = anime.title || "Unknown Title";
     animeDiv.appendChild(title);
 
+    animeDiv.addEventListener('click', () => {
+      this.openModal(anime);
+    });
     return animeDiv;
 }
+openModal(anime) {
+  const modal = document.getElementById('animeModal');
+  const animeInfoBtn = document.getElementById('animeInfoBtn');
+  const trailerBtn = document.getElementById('trailerBtn');
+  
+  modal.style.display = "block";
 
+  animeInfoBtn.onclick = () => {
+    window.open(`https://myanimelist.net/anime/${anime.mal_id}`, "_blank");
+  }
+
+  trailerBtn.onclick = () => {
+    fetch(`https://api.jikan.moe/v4/anime/${anime.mal_id}/videos`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data && data.data && data.data.promo) {
+                // Get the first promo's trailer URL
+                const trailer = data.data.promo[0]?.trailer;
+
+                if (trailer && trailer.url) {
+                    window.open(trailer.url, "_blank");
+                } else {
+                    alert("Trailer not available for this anime.");
+                }
+            } else {
+                alert("No videos available for this anime.");
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching trailer:", error);
+        });
+}
+  const closeModal = document.getElementsByClassName("close-btn")[0];
+  closeModal.onclick = () => {
+    modal.style.display = "none";
+  }
+
+  window.onclick = (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+}
     displayResults(data) {
         // Clear the results div if appendMode is not set.
         if (!this.appendMode) {
