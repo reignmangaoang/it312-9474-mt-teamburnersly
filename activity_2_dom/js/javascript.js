@@ -50,8 +50,8 @@ class AnimeSearcher {
   appendResults(data) {
     if (!data.data || data.data.length === 0) {
       this.elements.resultsDiv.innerHTML = "No Result";
-      this.elements.prevBtn.style.display = "none"; // Hide prev button
-      this.elements.nextBtn.style.display = "none"; // Hide next button
+      this.elements.prevBtn.style.display = "none"; 
+      this.elements.nextBtn.style.display = "none"; 
       return;
     }
     data.data.forEach((anime) => {
@@ -234,12 +234,11 @@ openTrailerModal(url) {
     const season = this.elements.seasonSelect.value;
 
     if (season && !year) {
-      year = new Date().getFullYear(); // default to current year if not provided
+      year = new Date().getFullYear();
+    } else if (year && !season) {
+      season = "spring";
     }
-    if (year && !season) {
-      season = "spring"; // default to Spring if no season is provided
-    }
-    if (year && season) {
+    else if (year && season) {
       return `https://api.jikan.moe/v4/seasons/${year}/${season.toLowerCase()}`;
     }
 
