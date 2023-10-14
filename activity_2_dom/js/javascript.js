@@ -136,7 +136,7 @@ openModal(anime) {
           if (data && data.data && data.data.promo) {
             const trailer = data.data.promo[0]?.trailer;
             if (trailer && trailer.url) {
-              window.open(trailer.url, "_blank");
+              this.openTrailerModal(trailer.url); 
             } else {
               alert("Trailer not available for this anime.");
             }
@@ -159,19 +159,54 @@ openModal(anime) {
         modal.style.display = "none";
       }
     };
+    const closeAnimeModal = document.getElementById("closeAnimeModal");
+closeAnimeModal.onclick = () => {
+  document.getElementById("animeModal").style.display = "none";
+};
+
+window.onclick = (event) => {
+  if (event.target === document.getElementById("animeModal")) {
+    document.getElementById("animeModal").style.display = "none";
+  } else if (event.target === document.getElementById("trailerModal")) {
+    document.getElementById("trailerModal").style.display = "none";
+  }
+};
+}
+
+openTrailerModal(url) {
+  const trailerModal = document.getElementById("trailerModal");
+  const trailerFrame = document.getElementById("trailerFrame");
+  
+
+  if(url.includes("youtube.com/watch?v=")) {
+      url = url.replace("youtube.com/watch?v=", "youtube.com/embed/");
+  }
+  
+  trailerFrame.src = url; 
+  trailerModal.style.display = "block"; 
+
+  const closeTrailerModal = document.getElementById("closeTrailerModal");
+  closeTrailerModal.onclick = () => {
+    trailerModal.style.display = "none";
+  };
+  window.onclick = (event) => {
+    if (event.target === trailerModal) {
+      trailerModal.style.display = "none";
+    }
+  };
 }
 
   displayResults(data) {
-    // Clear the results div if appendMode is not set.
+    
     if (!this.appendMode) {
       this.elements.resultsDiv.innerHTML = "";
     }
 
-    // Display "No Result" if no data is available.
+    
     if (!data.data || data.data.length === 0) {
       this.elements.resultsDiv.innerHTML = "No Result";
-      this.elements.prevBtn.style.display = "none"; // Hide prev button
-      this.elements.nextBtn.style.display = "none"; // Hide next button
+      this.elements.prevBtn.style.display = "none"; 
+      this.elements.nextBtn.style.display = "none";
       return;
     }
 
