@@ -10,10 +10,20 @@
         <img src="Graphics/Home.png">
         <p>Aglutow</p>
         <div class="headerMenu">
-            <img src="Graphics/Profile Pictures/Alice.png" id="profilePicture" onclick="myFunction()">
+            <img src="Graphics/Profile Pictures/Alice.png" class="headerProfile" id="profilePicture" onclick="myFunction()">
             <div class="miniMenu" id="miniMenu">
-                <a href="profile.html">Profile</a>
-                <a href="index.html">Logout</a>
+                <a href="profile.html" title="first">
+                    <div class="buttonWithImage">
+                        <img src="Graphics/LogOut.png">
+                        <p>Profile</p>
+                    </div>
+                </a>    
+                <a title="last" onclick="logOut()" href="index.html" >
+                    <div class="buttonWithImage">
+                        <img src="Graphics/LogOut.png">
+                        <p>Log Out</p>
+                    </div>
+                </a>
             </div>
         </div>
     </header>

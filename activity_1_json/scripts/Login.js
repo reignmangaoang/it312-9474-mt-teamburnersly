@@ -13,3 +13,10 @@ async function userExists(){
     }
     console.log("False")    
 }
+
+function initializeLogIn(){
+    if(!(localStorage.getItem("User ID")==null)){
+        window.location.href = "profile.html" 
+    }
+}
+initializeLogIn()
