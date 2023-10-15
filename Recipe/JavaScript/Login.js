@@ -1,5 +1,5 @@
 async function userExists(){
-    let users = await fetch("data/users.json")
+    let users = await fetch("Data/Users.json")
     let userList = await users.json()
     for(let i = 0; i <userList.length; i++){
         var user = userList[i]

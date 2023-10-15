@@ -85,14 +85,7 @@
           <!-- Add status options such as "Airing", "Completed", etc. -->
         </select>
 
-        <!-- Country (assuming this is the production country or source of the anime) -->
-        <label for="countrySelect">Country:</label>
-        <select id="countrySelect">
-          <option value="">Country</option>
-          <option value="China">China</option>
-          <option value="Japan">Japan</option>
-          <!-- Add countries -->
-        </select>
+
 
         <!-- Season -->
         <label for="seasonSelect">Season:</label>
@@ -112,8 +105,8 @@
     <div class="trending-section">
       <h2 class="trendingHeader">Top Anime of all Time</h2>
       <div id="trendingAnime"></div>
-  </div>
-  <!-- Recently Updated Anime Container-->
+    </div>
+    <!-- Recently Updated Anime Container-->
     <div class="recent-updates-section">
       <h2 class="updatedHeader">Recently Updated Anime</h2>
       <div id="recentlyUpdatedAnime"></div>
@@ -149,8 +142,8 @@
         <button id="trailerBtn">Watch Trailer</button>
       </div>
     </div>
-    </div>
-<!-- Trailer Modal -->
+
+    <!-- Trailer Modal -->
     <div id="trailerModal" class="modal">
       <div class="modal-content">
         <span class="close-btn" id="closeTrailerModal">&times;</span>
@@ -163,24 +156,28 @@
         ></iframe>
       </div>
     </div>
+    <div id="loadingScreen" class="loading-screen">
+      <div class="loader"></div>
+    </div>
 
     <script src="js/javascript.js"></script>
   </body>
-      <!-- Footer Container -->
-      <footer>
-        <div class="footer-container">
-            <div class="footer-logo">
-                <h2>Anime<span>Archives</span></h2>
-            </div>
-            <div class="footer-disclaimer">
-                Disclaimer: This site does not store any files on its server. All contents are provided by non-affiliated third parties.
-            </div>
-            <div class="footer-manga-btn">
-                <button>Read Manga</button>
-            </div>
-            <div class="footer-copyright">
-                &copy; 2023 Anime Archives. All Rights Reserved.
-            </div>
-        </div>
-    </footer>
+  <!-- Footer Container -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2>Anime<span>Archives</span></h2>
+      </div>
+      <div class="footer-disclaimer">
+        Disclaimer: This site does not store any files on its server. All
+        contents are provided by non-affiliated third parties.
+      </div>
+      <div class="footer-manga-btn">
+        <button>Read Manga</button>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2023 Anime Archives. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
 </html>

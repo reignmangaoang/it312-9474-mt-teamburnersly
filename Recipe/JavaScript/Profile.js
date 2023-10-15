@@ -22,7 +22,16 @@ async function showAllRecipes(){
     await clearAllRecipes()
     showRecipeInList(allRecipes)
 }
-
+async function showAllRecipes2(){
+    var currentList = await getAllRecipes()
+    if (picked == "own"){
+        currentList = await getRecipeByUserId(currentList,userId)
+    } else if (picked == "saved"){
+        currentList = await getSavedRecipes(currentList,userId)
+    }
+    await clearAllRecipes()
+    showRecipeInList(currentList)
+}
 async function showRecipeByType(type){
     var currentList = await getAllRecipes()
     if (picked == "own"){
@@ -144,7 +153,7 @@ async function getRecipeByType(recipeList,type){
 }
 /*Gets the recipe using its id*/
 async function getRecipeById(id){
-    let recipes = await fetch("data/recipes.json")
+    let recipes = await fetch("Data/Recipes.json")
     let recipeList = await recipes.json()
     let chosenRecipe
     for(let i = 0; i < recipeList.length; i++){
@@ -157,13 +166,13 @@ async function getRecipeById(id){
 }
 /*Gets all the recipes*/
 async function getAllRecipes(){
-    let recipes = await fetch("data/recipes.json")
+    let recipes = await fetch("Data/Recipes.json")
     let recipeList = await recipes.json()
     return recipeList
 }
 
 async function getUserById(id){
-    let users = await fetch("data/users.json")
+    let users = await fetch("Data/Users.json")
     let userList = await users.json()
     let chosenUser
     for(let i = 0; i <userList.length; i++){
@@ -190,6 +199,6 @@ function initializePage(id){
         showOwnRecipes(id)
      })()
 }
-localStorage.setItem("User ID",1)
+
 var userId = localStorage.getItem("User ID");
 initializePage(userId)

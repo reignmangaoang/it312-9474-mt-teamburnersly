@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-        
+     
+    <!-- ======= index head ======= -->
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Home </title>
+            <title> Aglutow | Home </title>
+        <link rel="icon" type="image/svg" href="svgs/aglutow_favicon.svg">
         <link rel="stylesheet" href="style/style.css">
-        <link rel="icon" href="" type="image/icon">
     </head>
 
+        <!-- ======= index body ======= -->
         <body>
-
-
+            <div class="LogInBox">
+                <img src="Graphics/fancy.png">
+                <h1>Welcome</h1>
+                <p>Name:</p>
+                <input type="text" id="username">
+                <p>Password:</p>
+                <input type="password" id="password">
+                <button onclick="userExists()">Click me</button>
+            </div>
+            <script src="JavaScript/Login.js"></script>
         </body>
 </html>
