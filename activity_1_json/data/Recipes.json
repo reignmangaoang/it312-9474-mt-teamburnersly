@@ -5,7 +5,7 @@
         "recipeAuthor": 1,
         "recipeType":"Dessert",
         "recipeDesc":"A sweet milkshake to satisfy your sweet tooth",
-        "recipePicture":"../Graphics/Food Pictures/milkshake.jpeg",
+        "recipePicture":"../images/Food Pictures/milkshake.jpeg",
         "recipeDuration":[
             300,
             1500
@@ -38,7 +38,7 @@
         "recipeAuthor": 2,
         "recipeType":"Fish",
         "recipeDesc":"A tasty smoked salmon for the whole family",
-        "recipePicture":"../Graphics/Food Pictures/Salmon.jpg",
+        "recipePicture":"../images/Food Pictures/Salmon.jpg",
         "recipeDuration":[
             29400,
             30900
@@ -71,7 +71,7 @@
         "recipeAuthor": 3,
         "recipeType": "Beef",
         "recipeDesc": "A cheesy burger for when your famished",
-        "recipePicture":"../Graphics/Food Pictures/HatchBurgers.jpg",
+        "recipePicture":"../images/Food Pictures/HatchBurgers.jpg",
         "recipeDuration":[
             180,
             1200
