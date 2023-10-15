@@ -490,7 +490,7 @@ function createCard(anime) {
 }
 
 function fetchTrending() {
-  fetch('https://api.jikan.moe/v4/top/anime')
+  fetch('https://api.jikan.moe/v4/top/anime?page=1')
       .then(response => {
           if (!response.ok) {
               throw new Error('Failed to fetch trending anime.');

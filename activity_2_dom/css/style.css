@@ -357,6 +357,7 @@ p {
     color: orange; 
     border-bottom: 2px solid orange;
     display: block;
+    font-size: 32px;
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
