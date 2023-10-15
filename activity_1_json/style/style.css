@@ -241,17 +241,113 @@
         margin: 0;
         padding: 0;
     }
-    /*Recipe Page*/
+/*Header*/
+header{
+    width: 100%;
+    background-color:aliceblue;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: goldenrod 3px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-style: solid;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+header > p{
+    width: 100%;
+    text-align: center;
+}
+header img{
+    height: 50px;
+}
+header #profilePicture{
+    border-radius: 50%;
+    border-color: goldenrod;
+    border-style: solid;
+    border-width: 2px;
+}
+.miniMenu{
+    display: none;
+    position: absolute;
+    width: 150px;
+    border-style: solid;
+    border-color: goldenrod;
+    top: 75px;
+    right: 0;
+    border-top: 0;
+}
+.miniMenu a{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    background-color: aliceblue;
+    color: goldenrod;
+    justify-content: center;
+}
+.buttonWithImage img{
+    height: 20px;
+    width: 20px;
+}
+.buttonWithImage{
+    display: flex;
+    align-items: center;
+}
+.buttonWithImage p{
+    margin: 0;
+    padding: a;
+}
+.show{
+    display: block;
+}
+/*Recipe Page*/
 .recipeImage{
     width: 100%;
     position: relative;
     margin-bottom: 10px;
 }
-.recipeImage img{
+.recipeImage > img{
     width: 100%;
     height: 300px;
     object-fit:cover;
     border-radius: 25px 25px 0px 0px;
+}
+#type{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: aliceblue;
+    width: max-content;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 25px;
+}
+#type img{
+    width: 25px;
+    height: 25px;
+}
+#type p{
+    margin: 0;
+}
+#title{
+    margin-top: 5px ;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: aliceblue;
+    width: max-content;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 25px;
+}
+#title h1{
+    margin: 0;
 }
 .imageTitle{
     position: absolute;
@@ -324,69 +420,4 @@
 .steps ol{
     margin: 0;
     margin-left: 5px;
-}
-/*Header*/
-header{
-    width: 100%;
-    background-color:aliceblue;
-    height: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: goldenrod 3px;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-style: solid;
-    box-sizing: border-box;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-header > p{
-    width: 100%;
-    text-align: center;
-}
-header img{
-    height: 50px;
-}
-header #profilePicture{
-    border-radius: 50%;
-    border-color: goldenrod;
-    border-style: solid;
-    border-width: 2px;
-}
-.miniMenu{
-    display: none;
-    position: absolute;
-    width: 150px;
-    border-style: solid;
-    border-color: goldenrod;
-    top: 75px;
-    right: 0;
-    border-top: 0;
-}
-.miniMenu a{
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    display: block;
-    width: 100%;
-    background-color: aliceblue;
-    color: goldenrod;
-    justify-content: center;
-}
-.buttonWithImage img{
-    height: 20px;
-    width: 20px;
-}
-.buttonWithImage{
-    display: flex;
-    align-items: center;
-}
-.buttonWithImage p{
-    margin: 0;
-    padding: a;
-}
-.show{
-    display: block;
 }

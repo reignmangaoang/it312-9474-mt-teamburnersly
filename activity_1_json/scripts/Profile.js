@@ -190,6 +190,6 @@ function initializePage(id){
         showOwnRecipes(id)
      })()
 }
-
+localStorage.setItem("User ID",1)
 var userId = localStorage.getItem("User ID");
 initializePage(userId)

@@ -3,14 +3,14 @@
     <title>
         Wonderland
     </title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
     <header class="header">
         <img src="Graphics/Home.png">
         <p>Aglutow</p>
         <div class="headerMenu">
-            <img src="Graphics/Profile Pictures/Alice.png" class="headerProfile" id="profilePicture" onclick="myFunction()">
+            <img src="images/Profile Pictures/Alice.png" class="headerProfile" id="profilePicture" onclick="myFunction()">
             <div class="miniMenu" id="miniMenu">
                 <a href="profile.html" title="first">
                     <div class="buttonWithImage">
@@ -45,7 +45,7 @@
         </div>
         <div class="contentBox" id="recipeBox">
             <div class="recipeMenu" title="categories">
-                <button title="first">All</button>
+                <button title="first" onclick="showAllRecipes2()">All</button>
                 <button onclick="showRecipeByType('Chicken')">Chicken</button>
                 <button onclick="showRecipeByType('Pork')">Pork</button>
                 <button onclick="showRecipeByType('Dessert')">Dessert</button>
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-    <script src="scripts/Profile.js"></script>
-    <script src="scripts/HeaderFunctions.js"></script>
+    <script src="JavaScript/Profile.js"></script>
+    <script src="JavaScript/HeaderFunctions.js"></script>
 </body>
 </html>
