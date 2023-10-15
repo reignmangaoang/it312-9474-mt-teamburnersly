@@ -3,7 +3,7 @@
         "userid": 1,
         "firstName": "Alice",
         "lastName": "Celestine",
-        "userName": "Alice The Redcon",
+        "userName": "alicetheredcon",
         "password": "Going2Alice",
         "favoriteRecipes":[2,3],
         "profilePic":"../images/Profile Pictures/Alice.png"
@@ -13,7 +13,7 @@
         "userid": 2,
         "firstName": "Gwen",
         "lastName": "Isolde",
-        "userName": "Hallowed Seamstress",
+        "userName": "hallowedseamstress",
         "password": "ThreadedNeedle",
         "favoriteRecipes":[1,3],
         "profilePic":"../images/Profile Pictures/Gwen.png"
@@ -23,7 +23,7 @@
         "userid": 3,
         "firstName": "Jack",
         "lastName": "Quicksilver",
-        "userName": "The Derailed",
+        "userName": "thederailed",
         "password": "Oculus",
         "favoriteRecipes":[2],
         "profilePic":"../images/Profile Pictures/Jack.png"

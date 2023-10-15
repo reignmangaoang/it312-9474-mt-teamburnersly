@@ -144,7 +144,7 @@ async function getRecipeByType(recipeList,type){
 }
 /*Gets the recipe using its id*/
 async function getRecipeById(id){
-    let recipes = await fetch("data/Recipes.json")
+    let recipes = await fetch("data/recipes.json")
     let recipeList = await recipes.json()
     let chosenRecipe
     for(let i = 0; i < recipeList.length; i++){
@@ -157,13 +157,13 @@ async function getRecipeById(id){
 }
 /*Gets all the recipes*/
 async function getAllRecipes(){
-    let recipes = await fetch("data/Recipes.json")
+    let recipes = await fetch("data/recipes.json")
     let recipeList = await recipes.json()
     return recipeList
 }
 
 async function getUserById(id){
-    let users = await fetch("data/Users.json")
+    let users = await fetch("data/users.json")
     let userList = await users.json()
     let chosenUser
     for(let i = 0; i <userList.length; i++){
