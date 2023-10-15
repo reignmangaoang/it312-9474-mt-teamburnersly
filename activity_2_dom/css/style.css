@@ -332,3 +332,25 @@ p {
   height: 500px;
   margin: 0 auto;
 }
+.trending-section,
+.recent-updates-section {
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.trending-section h2,
+.recent-updates-section h2 {
+    color: #f3b60d; 
+    border-bottom: 2px solid #f3b60d;
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+#trendingAnime,
+#recentlyUpdatedAnime {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

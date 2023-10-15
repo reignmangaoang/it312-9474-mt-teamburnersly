@@ -18,11 +18,24 @@ class AnimeSearcher {
     this.elements.nextBtn = document.getElementById("nextBtn");
     this.elements.prevBtn.addEventListener("click", this.prevPage.bind(this));
     this.elements.nextBtn.addEventListener("click", this.nextPage.bind(this));
-    this.elements.searchBtn.addEventListener("click", this.search.bind(this));
     this.elements.searchBtn.addEventListener("click", () => {
       this.elements.resultsDiv.innerHTML = "";
+  
+      // Clear and hide the trendingAnime and recentlyUpdatedAnime sections
+      const trendingDiv = document.getElementById("trendingAnime");
+      const updatedDiv = document.getElementById("recentlyUpdatedAnime");
+      const trendingHeader = document.querySelector(".trending-header");
+      const recentlyUpdatedHeader = document.querySelector(".recently-updated-header");
+    
+      trendingDiv.innerHTML = "";
+      updatedDiv.innerHTML = "";
+      trendingDiv.style.display = "none";
+      updatedDiv.style.display = "none";
+      trendingHeader.style.display = "none";
+      recentlyUpdatedHeader.style.display = "none";
+      
       this.search();
-    });
+  });
   
   }
   prevPage() {
@@ -83,7 +96,7 @@ class AnimeSearcher {
 
     // Displaying the image
     const img = document.createElement("img");
-    img.src = anime.images.jpg.large_image_url;
+    img.src = anime.images?.jpg?.image_url || "path_to_fallback_image.jpg";
     img.alt = `Image of ${anime.title}`;
     img.onerror = function () {
       this.onerror = null;
@@ -101,7 +114,7 @@ class AnimeSearcher {
       this.openModal(anime);
     });
     return animeDiv;
-  }
+}
 openModal(anime) {
     const modal = document.getElementById("animeModal");
     const animeImage = document.getElementById("animeImage");
@@ -138,7 +151,7 @@ openModal(anime) {
             if (trailer && trailer.url) {
               this.openTrailerModal(trailer.url); 
             } else {
-              alert("Trailer not available for this anime.");
+              alert("This anime doesn't have a recorded Offcial Trailer.");
             }
           } else {
             alert("No videos available for this anime.");
@@ -228,7 +241,6 @@ openTrailerModal(url) {
       this.elements.resultsDiv.appendChild(animeCard);
     });
   }
-
   getSearchURL() {
     let year = this.elements.yearInput.value;
     const season = this.elements.seasonSelect.value;
@@ -264,8 +276,53 @@ openTrailerModal(url) {
     return `https://api.jikan.moe/v4/anime?${params}`;
   }
 }
+  function fetchTrending() {
+    fetch('https://api.jikan.moe/v4/top/anime/1')  
+        .then((res) => res.json())
+        .then((data) => {
+            console.log("Trending Data:", data);
+  
+            const trendingDiv = document.getElementById("trendingAnime");
+  
+            if (data && data.top) {  // Use the right property name based on API response
+                data.top.slice(0, 5).forEach((anime) => {
+                    const animeCard = createAnimeCard(anime);  // Adjust based on actual data structure
+                    trendingDiv.appendChild(animeCard);
+                });
+            }
+        })
+        .catch((error) => console.log("Error fetching trending anime:", error));
+  }
+  
+  function fetchRecentlyUpdated() {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const seasons = ["winter", "spring", "summer", "fall"];
+    const currentMonth = currentDate.getMonth();
+    const currentSeason = seasons[Math.floor(currentMonth / 3)];
+  
+    fetch(`https://api.jikan.moe/v4/seasons/${currentYear}/${currentSeason}`)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log("Recently Updated Data:", data);
+  
+            const updatedDiv = document.getElementById("recentlyUpdatedAnime");
+  
+            if (data && data.anime) {
+                data.anime.slice(0, 5).forEach((anime) => {
+                    const animeCard = createAnimeCard(anime);  // Adjust based on actual data structure
+                    updatedDiv.appendChild(animeCard);
+                });
+            }
+        })
+        .catch((error) => console.log("Error fetching recently updated anime:", error));
+  }
 document.addEventListener("DOMContentLoaded", function () {
   const animeSearcher = new AnimeSearcher();
+
+  // Fetching the trending and recently updated anime
+  fetchTrending();
+  fetchRecentlyUpdated();
 
   // Filter Script
   document.getElementById("filterIcon").addEventListener("click", function () {
