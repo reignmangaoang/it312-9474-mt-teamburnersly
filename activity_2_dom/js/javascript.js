@@ -96,7 +96,8 @@ class AnimeSearcher {
 
     // Displaying the image
     const img = document.createElement("img");
-    img.src = anime.images?.jpg?.image_url || "path_to_fallback_image.jpg";
+    img.src = anime.images && anime.images.jpg && anime.images.jpg.image_url
+    ? anime.images.jpg.image_url: "path_to_fallback_image.jpg";
     img.alt = `Image of ${anime.title}`;
     img.onerror = function () {
       this.onerror = null;
@@ -217,7 +218,7 @@ openTrailerModal(url) {
 
     
     if (!data.data || data.data.length === 0) {
-      this.elements.resultsDiv.innerHTML = "No Result";
+      this.elements.resultsDiv.innerHTML = "No Result. :(";
       this.elements.prevBtn.style.display = "none"; 
       this.elements.nextBtn.style.display = "none";
       return;
@@ -277,16 +278,16 @@ openTrailerModal(url) {
   }
 }
   function fetchTrending() {
-    fetch('https://api.jikan.moe/v4/top/anime/1')  
+    fetch('https://api.jikan.moe/v4/top/anime')  
         .then((res) => res.json())
         .then((data) => {
             console.log("Trending Data:", data);
   
             const trendingDiv = document.getElementById("trendingAnime");
   
-            if (data && data.top) {  // Use the right property name based on API response
+            if (data && data.top) {  
                 data.top.slice(0, 5).forEach((anime) => {
-                    const animeCard = createAnimeCard(anime);  // Adjust based on actual data structure
+                    const animeCard = createAnimeCard(anime);
                     trendingDiv.appendChild(animeCard);
                 });
             }
@@ -310,7 +311,7 @@ openTrailerModal(url) {
   
             if (data && data.anime) {
                 data.anime.slice(0, 5).forEach((anime) => {
-                    const animeCard = createAnimeCard(anime);  // Adjust based on actual data structure
+                    const animeCard = createAnimeCard(anime);
                     updatedDiv.appendChild(animeCard);
                 });
             }
@@ -320,7 +321,7 @@ openTrailerModal(url) {
 document.addEventListener("DOMContentLoaded", function () {
   const animeSearcher = new AnimeSearcher();
 
-  // Fetching the trending and recently updated anime
+  // Fetching the trending and recently updated anime;
   fetchTrending();
   fetchRecentlyUpdated();
 
