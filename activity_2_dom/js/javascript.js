@@ -301,15 +301,175 @@ class AnimeSearcher {
           this.openModal(anime);
       });
       return animeDiv;
+      
   }
 }
 
 const animeSearcher = new AnimeSearcher();
 
-function createCard(anime, className) {
-  const animeDiv = document.createElement("div");
-  animeDiv.classList.add(className);
+function openModal (anime) {
+  const modal = document.getElementById("animeModal");
+  const animeImage = document.getElementById("animeImage");
+  const animeTitle = document.getElementById("animeTitle");
+  const animeDescription = document.getElementById("animeDescription");
+  const animeType = document.getElementById("animeType");
+  const animeGenre = document.getElementById("animeGenre");
+  const animeReleaseYear = document.getElementById("animeReleaseYear");
+  const animeStatus = document.getElementById("animeStatus");
+  const animeInfoBtn = document.getElementById("animeInfoBtn");
+  const trailerBtn = document.getElementById("trailerBtn");
+  console.log("Opening modal for anime:", anime.mal_id);
+  animeImage.src = anime.images.jpg.large_image_url || "";
+  animeTitle.textContent = anime.title || "Unknown Title";
+  animeDescription.textContent = anime.synopsis || "Description not available.";
+  animeType.textContent = `Type: ${anime.type || "Unknown"}`;
+  animeGenre.textContent = `Genre: ${anime.genres.map((genre) => genre.name).join(", ") || "Unknown"}`;
+  animeReleaseYear.textContent = `Released: ${new Date(anime.aired.from).getFullYear() || "Unknown"}`;
+  animeStatus.textContent = `Status: ${anime.status || "Unknown"}`;
 
+  fetch(`https://api.jikan.moe/v4/anime/${anime.mal_id}/statistics`)
+      .then((response) => {
+          if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+      })
+      .then((statsData) => {
+          console.log("Received statsData:", statsData);
+          this.updateModalWithStatistics(statsData);
+      })
+      .catch((error) => {
+          console.error("Error fetching statistics:", error);
+          if (error.message.includes("429")) {
+              console.warn("You've hit the rate limit for the Jikan API.");
+          }
+      });
+
+  modal.style.display = "block";
+
+  animeInfoBtn.onclick = () => {
+      window.open(`https://myanimelist.net/anime/${anime.mal_id}`, "_blank");
+  };
+
+  trailerBtn.onclick = () => {
+      fetch(`https://api.jikan.moe/v4/anime/${anime.mal_id}/videos`)
+          .then((response) => {
+              if (!response.ok) {
+                  throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.json();
+          })
+          .then((data) => {
+              if (data && data.data && data.data.promo) {
+                  const trailer = data.data.promo[0]?.trailer;
+                  if (trailer && trailer.url) {
+                      this.openTrailerModal(trailer.url);
+                  } else {
+                      alert("This anime doesn't have a recorded Official Trailer.");
+                  }
+              } else {
+                  alert("No videos available for this anime.");
+              }
+          })
+          .catch((error) => {
+              console.error("Error fetching trailer:", error);
+          });
+  };
+
+  const closeModal = document.getElementsByClassName("close-btn")[0];
+  closeModal.onclick = () => {
+      modal.style.display = "none";
+  };
+  window.onclick = (event) => {
+      if (event.target === modal) {
+          modal.style.display = "none";
+      }
+  };
+  const closeAnimeModal = document.getElementById("closeAnimeModal");
+  closeAnimeModal.onclick = () => {
+      document.getElementById("animeModal").style.display = "none";
+  };
+
+  window.onclick = (event) => {
+      if (event.target === document.getElementById("animeModal")) {
+          document.getElementById("animeModal").style.display = "none";
+      } else if (event.target === document.getElementById("trailerModal")) {
+          document.getElementById("trailerModal").style.display = "none";
+      }
+  };
+}
+
+function updateModalWithStatistics(statsData) {
+  const watching = document.getElementById("animeWatching");
+  const completed = document.getElementById("animeCompleted");
+  const onHold = document.getElementById("animeOnHold");
+  const dropped = document.getElementById("animeDropped");
+  const planToWatch = document.getElementById("animePlanToWatch");
+
+  const stats = statsData.data || {};
+
+  watching.textContent = `Watching: ${stats.watching || "N/A"}`;
+  completed.textContent = `Completed: ${stats.completed || "N/A"}`;
+  onHold.textContent = `On Hold: ${stats.on_hold || "N/A"}`;
+  dropped.textContent = `Dropped: ${stats.dropped || "N/A"}`;
+  planToWatch.textContent = `Plan to Watch: ${stats.plan_to_watch || "N/A"}`;
+}
+
+function openTrailerModal(url) {
+  const trailerModal = document.getElementById("trailerModal");
+  const trailerFrame = document.getElementById("trailerFrame");
+
+  if (url.includes("youtube.com/watch?v=")) {
+      url = url.replace("youtube.com/watch?v=", "youtube.com/embed/");
+  }
+
+  trailerFrame.src = url;
+  trailerModal.style.display = "block";
+
+  const closeTrailerModal = document.getElementById("closeTrailerModal");
+  closeTrailerModal.onclick = () => {
+      trailerModal.style.display = "none";
+  };
+  window.onclick = (event) => {
+      if (event.target === trailerModal) {
+          trailerModal.style.display = "none";
+      }
+  };
+}
+
+function displayResults(data) {
+  if (!this.appendMode) {
+      this.elements.resultsDiv.innerHTML = "";
+  }
+
+  if (!data.data || data.data.length === 0) {
+      this.elements.resultsDiv.innerHTML = "No Result";
+      this.elements.prevBtn.style.display = "none";
+      this.elements.nextBtn.style.display = "none";
+      return;
+  }
+
+  if (this.currentPage === 1) {
+      this.elements.prevBtn.style.display = "none";
+  } else {
+      this.elements.prevBtn.style.display = "block";
+  }
+
+  if (data.data.length < 10) {
+      this.elements.nextBtn.style.display = "none";
+  } else {
+      this.elements.nextBtn.style.display = "block";
+  }
+
+  this.updatePageDisplay();
+  data.data.forEach((anime) => {
+      const animeCard = this.createAnimeCard(anime);
+      this.elements.resultsDiv.appendChild(animeCard);
+  });
+}
+function createCard(anime) {
+  const animeDiv = document.createElement("div");
+  animeDiv.classList.add("anime-card");
   const img = document.createElement("img");
   img.src = anime.images && anime.images.jpg && anime.images.jpg.image_url
       ? anime.images.jpg.image_url : "path_to_fallback_image.jpg";
@@ -319,28 +479,18 @@ function createCard(anime, className) {
       this.src = "path_to_fallback_image.jpg";
   };
   animeDiv.appendChild(img);
-
   const title = document.createElement("div");
   title.classList.add("anime-title");
   title.innerText = anime.title || "Unknown Title";
   animeDiv.appendChild(title);
-
   animeDiv.addEventListener("click", () => {
-      animeSearcher.openModal(anime);
+      this.openModal(anime);
   });
   return animeDiv;
 }
 
-function createTrendingAnimeCard(anime) {
-  return createCard(anime, "trending-anime-card");
-}
-
-function createUpdatedAnimeCard(anime) {
-  return createCard(anime, "updated-anime-card");
-}
-
 function fetchTrending() {
-  fetch('https://api.jikan.moe/v4/anime?order_by=members&page=1')
+  fetch('https://api.jikan.moe/v4/top/anime')
       .then(response => {
           if (!response.ok) {
               throw new Error('Failed to fetch trending anime.');
@@ -356,7 +506,7 @@ function fetchTrending() {
 }
 
 function fetchRecentlyUpdated() {
-  fetch('https://api.jikan.moe/v4/anime?order_by=score&page=1')
+  fetch('https://api.jikan.moe/v4/seasons/now')
       .then(response => {
           if (!response.ok) {
               throw new Error('Failed to fetch recently updated anime.');
