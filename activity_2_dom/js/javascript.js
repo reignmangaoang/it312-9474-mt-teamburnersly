@@ -533,7 +533,6 @@ function addAnimeToDom(animeData, domElement) {
 document.addEventListener("DOMContentLoaded", function () {
   fetchTrending();
   fetchRecentlyUpdated();
-
   document.getElementById("filterIcon").addEventListener("click", function () {
       let filters = document.getElementById("filterSection");
       if (filters.style.display === "none" || filters.style.display === "") {
