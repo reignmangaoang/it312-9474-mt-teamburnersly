@@ -187,7 +187,7 @@ button:hover {
   display: block;
   height: calc(100% - 40px);
   object-fit: cover;
-}
+} 
 
 .anime-title {
   background-color: rgba(219, 167, 70, 0.713);
@@ -262,7 +262,7 @@ button:hover {
   color: white;
   padding: 20px;
   border: 5px solid orange;
-  width: 70%;
+  width: 50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 20px;
   animation-name: animatetop;
@@ -311,7 +311,7 @@ p {
   border-radius: 3px;
   background-color: rgb(41, 41, 41); 
   color: white; 
-  margin-top: 20px; 
+  margin-top: 10px; 
   max-height: 200px; 
   overflow-y: auto; 
 }
@@ -342,8 +342,8 @@ p {
     margin-bottom: 30px;
 }
 
-.trending-section h2,
-.recent-updates-section h2 {
+.trendingHeader,
+.updatedHeader{
     color: #f3b60d; 
     border-bottom: 2px solid #f3b60d;
     display: block;
@@ -351,9 +351,98 @@ p {
     margin-bottom: 20px;
 }
 
-#trendingAnime,
-#recentlyUpdatedAnime {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+#trendingAnime, #recentlyUpdatedAnime {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  width: 100%;
+  
+}
+.statistic-item {
+  padding: 8px 12px; 
+  margin-bottom: 10px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  
+  border-radius: 5px; 
+  background-color: #e6e6e6;  
+}
+
+
+#animeWatching {
+  background-color: #ff7700;
+  font-weight: 800;  
+}
+
+#animeCompleted {
+  background-color: #b75702;
+  font-weight: 800;  
+}
+
+#animeOnHold {
+  background-color: #884002; 
+  font-weight: 800;  
+}
+
+#animeDropped {
+  background-color: #552801;
+  font-weight: 800;  
+}
+
+#animePlanToWatch {
+  background-color: #3a1b00; 
+  font-weight: 800;  
+}
+.anime-details {
+  display: flex;
+  align-items: center;  
+}
+
+#animeImage {
+  max-width: 40%; 
+  margin-right: 20px;  
+}
+
+.anime-statistics {
+  flex: 1; 
+}
+#animeTitle { 
+  color: orange;
+  padding-top: 10px;
+}
+#animeType {
+  color:#ff9100;
+}
+#animeGenre {
+  color:#ff9e0d;
+}
+#animeReleaseYear {
+  color: #ff7700;
+}
+#animeStatus {
+  color:#f3b60d;
+}
+.trending-anime-card,
+.updated-anime-card {
+    display: inline-block;
+    width: 150px;
+    height: 250px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.trending-anime-card img, .updated-anime-card img {
+    width: 100%;
+    display: block;
+    height: calc(100% - 40px);
+    object-fit: cover;
+}
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
 }

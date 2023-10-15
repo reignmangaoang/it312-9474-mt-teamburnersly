@@ -106,16 +106,17 @@
     </div>
 
     <div id="results"></div>
+
     <div class="trending-section">
-      <h2 class="trending-header">Trending Anime</h2>
+      <h2 class="trendingHeader">Trending Anime</h2>
       <div id="trendingAnime"></div>
   </div>
-  
   <div class="recent-updates-section">
-    <h2 class="recently-updated-header">Recently Updated Anime</h2>
+    <h2 class="updatedHeader">Recently Updated Anime</h2>
       <div id="recentlyUpdatedAnime"></div>
   </div>
-    <div id="search_results" class="cards"></div>
+  
+  <div id="search_results" class="cards"></div>
     <div class="button-container">
       <button id="prevBtn"><</button>
       <button id="nextBtn">></button>
@@ -123,16 +124,25 @@
     <div id="animeModal" class="modal">
       <div class="modal-content">
         <span class="close-btn" id="closeAnimeModal">&times;</span>
-        <img id="animeImage" src="" alt="Anime Image" />
+          <div class="anime-details">
+              <img id="animeImage" src="" alt="Anime Image" />
+              <div class="anime-statistics">
+                  <div class="statistic-item" id="animeWatching"></div>
+                  <div class="statistic-item" id="animeCompleted"></div>
+                  <div class="statistic-item" id="animeOnHold"></div>
+                  <div class="statistic-item" id="animeDropped"></div>
+                  <div class="statistic-item" id="animePlanToWatch"></div>
+              </div>
+          </div>
         <h2 id="animeTitle">Anime Title</h2>
         <p id="animeDescription">Description of the Anime...</p>
         <div id="animeType"></div>
         <div id="animeGenre"></div>
         <div id="animeReleaseYear"></div>
         <div id="animeStatus"></div>
+        
         <button id="animeInfoBtn">More Info on MAL</button>
         <button id="trailerBtn">Watch Trailer</button>
-      </div>
     </div>
 
     <div id="trailerModal" class="modal">
