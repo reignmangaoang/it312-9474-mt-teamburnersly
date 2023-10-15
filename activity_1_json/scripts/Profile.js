@@ -191,5 +191,5 @@ function initializePage(id){
      })()
 }
 
-var userId = 2/*localStorage.getItem("User ID")*/;
+var userId = localStorage.getItem("User ID");
 initializePage(userId)
