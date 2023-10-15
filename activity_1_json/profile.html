@@ -3,64 +3,49 @@
     <title>
         Wonderland
     </title>
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header class="header">
+        <img src="Graphics/Home.png">
+        <p>Aglutow</p>
+        <div class="headerMenu">
+            <img src="Graphics/Profile Pictures/Alice.png" id="profilePicture" onclick="myFunction()">
+            <div class="miniMenu" id="miniMenu">
+                <a href="profile.html">Profile</a>
+                <a href="index.html">Logout</a>
+            </div>
+        </div>
+    </header>
     <div class="content">
         <div class="personalInfo">
-            <img src="images/Alice.png">
+            <img src="Graphics/Profile Pictures/Anon.png" id="profilePicture">
             <div class="textBox">
-                <h1>ALICE CELESTINE</h1>
-                <p>Submitted Recipes: 5</p>
-                <p>Saved Recipes: 10</p>
+                <h1 id="fullName">John Doe</h1>
+                <p id="userName">@John Doe</p>
+                <p id="submitted">Submitted Recipes: 5</p>
+                <p id="saved">Saved Recipes: 10</p>
                 <div class="recipeMenu">
-                    <button title="first">Own Recipes</button>
-                    <button>Saved Recipes</button>
+                    <button title="first" onclick="showOwnRecipes(userId)">Own Recipes</button>
+                    <button onclick="showSavedRecipes(userId)">Saved Recipes</button>
+                    <button onclick="showAllRecipes()">All Recipes</button>
                     <button title="last">Add Recipe</button>
                 </div>
             </div>
         </div>
-        <div class="contentBox">
+        <div class="contentBox" id="recipeBox">
             <div class="recipeMenu" title="categories">
                 <button title="first">All</button>
-                <button>Chicken</button>
-                <button>Pork</button>
-                <button>Dessert</button>
-                <button>Beef</button>
-                <button>Vegetable</button>
-                <button title="last">Fish</button>
-            </div>
-            <div class="recipeTab">
-                <img src="images/pizza.jpg">
-                <div class = "recipeTabTitle">
-                    <p>A delicious pepperoni pizza</p>
-                    <p>Alice Celestine</p>
-                    <h2>Pepperoni Pizza</h2>
-                </div>
-            </div>
-            <div class="recipeTab">
-                <img src="images/Burger.jpg">
-                <div class = "recipeTabTitle">
-                    <p>A cheese burger with bacon</p>
-                    <p>Alice Celestine</p>
-                    <h2>Cheese Burger</h2>
-                </div>
-            </div>
-            <div class="recipeTab">
-                <img src="images/milkshake.jpeg">
-                <div class = "recipeTabTitle">
-                    <p>A sweet milkshake</p>
-                    <p>Alice Celestine</p>
-                    <h2>Strawberry Milkshake</h2>
-                </div>
-            </div>
-            <div class="recipeTab">
-            </div>
-            <div class="recipeTab">
-            </div>
-            <div class="recipeTab">
+                <button onclick="showRecipeByType('Chicken')">Chicken</button>
+                <button onclick="showRecipeByType('Pork')">Pork</button>
+                <button onclick="showRecipeByType('Dessert')">Dessert</button>
+                <button onclick="showRecipeByType('Beef')">Beef</button>
+                <button onclick="showRecipeByType('Vegetable')">Vegetable</button>
+                <button onclick="showRecipeByType('Fish')" title="last">Fish</button>
             </div>
         </div>
     </div>
+    <script src="scripts/Profile.js"></script>
+    <script src="scripts/HeaderFunctions.js"></script>
 </body>
 </html>
