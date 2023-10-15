@@ -485,3 +485,32 @@ footer {
   color: #838383;
   font-size: 14px;
 }
+/* Animation Initial States */
+.footer-logo, .footer-disclaimer, .footer-manga-btn, .footer-copyright {
+  opacity: 0; 
+  transition: all 0.5s; 
+}
+
+.footer-logo {
+  transform: translateY(-20px); 
+}
+.footer-disclaimer {
+  transform: translateX(-20px); 
+}
+
+.footer-manga-btn {
+  transform: translateX(20px); 
+}
+
+.footer-copyright {
+  transform: translateY(20px);
+}
+/* Small Screen Animations */
+@media (max-width: 768px) {
+  .footer-logo, 
+  .footer-disclaimer, 
+  .footer-manga-btn, 
+  .footer-copyright {
+    transform: translateY(20px); /* slide up */
+  }
+}
