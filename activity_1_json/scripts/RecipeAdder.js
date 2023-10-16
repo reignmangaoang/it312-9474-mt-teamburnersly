@@ -1,3 +1,5 @@
+let type=""
+
 function addIngredient(){
     var ingredienlist = document.getElementById("Ingredients")
     var ingredient = document.createElement("li")
@@ -44,4 +46,38 @@ function a(){
     reader.onerror = function (error) {
         console.log('Error: ', error);
     };
+}
+
+function changeToPork(){
+    document.getElementById("choosenType").innerHTML = "Choosen Type: Pork"
+    type="Pork"
+}
+
+function changeToChicken(){
+    document.getElementById("choosenType").innerHTML = "Choosen Type: Chicken"
+    type="Chicken"
+}
+
+function changeToDessert(){
+    document.getElementById("choosenType").innerHTML = "Choosen Type: Dessert"
+    type="Dessert"
+}
+
+function changeToBeef(){
+    document.getElementById("choosenType").innerHTML = "Choosen Type: Beef"
+    type="Beef"
+}
+
+function changeToVegetable(){
+    document.getElementById("choosenType").innerHTML = "Choosen Type: Vegetable"
+    type="Vegetable"
+}
+
+function changeToFish(){
+    document.getElementById("choosenType").innerHTML = "Choosen Type: Fish"
+    type="Fish"
+}
+
+function saveRecipe(){
+    
 }

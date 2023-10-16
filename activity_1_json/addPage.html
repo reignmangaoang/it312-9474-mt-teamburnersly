@@ -36,7 +36,7 @@
                 </div>
             </header>
             <div class="createRecipeForm">
-                <form>
+                <div class="form2">
                     <div class="form">
                         <p>Name of Recipe</p>
                         <input type="text" id="recipeName">
@@ -47,19 +47,19 @@
                     </div>
                     <div class="form">
                         <p>Type</p>
-                        <p>Chosen Type:</p>
+                        <p id="choosenType">Choosen Type:</p>
                         <div class="recipeMenu" title="categories">
-                            <button title="first">
+                            <button title="first" onclick="changeToChicken()">
                                 <img src="images/icons/chicken_icon.svg" alt="Fish Icon"> Chicken</button>
-                            <button>
+                            <button onclick="changeToPork()">
                                 <img src="images/icons/pork_icon.svg" alt="Fish Icon"> Pork</button>
-                            <button>
+                            <button onclick="changeToDessert()">
                                 <img src="images/icons/dessert_icon.svg" alt="Fish Icon"> Dessert</button>
-                            <button> 
+                            <button onclick="changeToBeef()"> 
                                 <img src="images/icons/beef_icon.svg" alt="Fish Icon"> Beef</button>
-                            <button>
+                            <button onclick="changeToVegetable()">
                                 <img src="images/icons/vegetable_icon.svg" alt="Fish Icon"> Vegetable</button>
-                            <button title="last">
+                            <button title="last" onclick="changeToFish()">
                                 <img src="images/icons/fish_icon.svg" alt="Fish Icon"> Fish </button>
                         </div>
                     </div>
@@ -86,7 +86,12 @@
                         <img id="prof">
                         <input type="file" id="myfile" name="myfile" accept="image/*" onchange="a()">
                     </div>
-                </form>
+                    <div class="saveOrNo">
+                        <button>Back</button>
+                        <div></div>
+                        <button>Save</button>
+                    </div>
+                </div>
             </div>
             <script src="scripts/FileReader.js"></script>
             <script src="scripts/HeaderFunctions.js"></script>
