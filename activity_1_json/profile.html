@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+
+     <!-- ======= index head ======= -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title> Aglutow | Profile </title>
+        <link rel="icon" type="image/svg" href="svgs/aglutow_favicon.svg">
+        <link rel="stylesheet" href="style/style.css">
+        
+        <!-- ======= index body ======= -->
+        <body>
+            <header class="header">
+                <img src="images/Home.png">
+                <p>Aglutow</p>
+                <div class="headerMenu">
+                    <img src="images/Profile Pictures/Anon.png" class="headerProfile" id="profilePicture" onclick="myFunction()">
+                    <div class="miniMenu" id="miniMenu">
+                        <a href="profile.html" title="first">
+                            <div class="buttonWithImage">
+                                <img src="images/LogOut.png">
+                                <p>Profile</p>
+                            </div>
+                        </a>    
+                        <a title="last" onclick="logOut()" href="index.html" >
+                            <div class="buttonWithImage">
+                                <img src="images/LogOut.png">
+                                <p>Log Out</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </header>
+            <div class="content">
+                <div class="personalInfo">
+                    <img src="images/Profile Pictures/Anon.png" id="profilePicture">
+                    <div class="textBox">
+                        <h1 id="fullName">John Doe</h1>
+                        <p id="userName">@John Doe</p>
+                        <p id="submitted">Submitted Recipes: 5</p>
+                        <p id="saved">Saved Recipes: 10</p>
+                        <div class="recipeMenu">
+                            <button title="first" onclick="showOwnRecipes(userId)">Own Recipes</button>
+                            <button onclick="showSavedRecipes(userId)">Saved Recipes</button>
+                            <button onclick="showAllRecipes()">All Recipes</button>
+                            <button title="last">Add Recipe</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="contentBox" id="recipeBox">
+                    <div class="recipeMenu" title="categories">
+                        <button title="first" onclick="showAllRecipes2()">All</button>
+                        <button onclick="showRecipeByType('Chicken')">Chicken</button>
+                        <button onclick="showRecipeByType('Pork')">Pork</button>
+                        <button onclick="showRecipeByType('Dessert')">Dessert</button>
+                        <button onclick="showRecipeByType('Beef')">Beef</button>
+                        <button onclick="showRecipeByType('Vegetable')">Vegetable</button>
+                        <button onclick="showRecipeByType('Fish')" title="last">Fish</button>
+                    </div>
+                </div>
+            </div>
+            <script src="scripts/Profile.js"></script>
+            <script src="scripts/HeaderFunctions.js"></script>
+        </body>
+</html>

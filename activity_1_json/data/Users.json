@@ -6,7 +6,7 @@
         "userName": "alicetheredcon",
         "password": "Going2Alice",
         "favoriteRecipes":[2,3],
-        "profilePic":"../images/Profile Pictures/Alice.png"
+        "profilePic":"images/Profile Pictures/Alice.png"
     },
 
     {
@@ -16,7 +16,7 @@
         "userName": "hallowedseamstress",
         "password": "ThreadedNeedle",
         "favoriteRecipes":[1,3],
-        "profilePic":"../images/Profile Pictures/Gwen.png"
+        "profilePic":"images/Profile Pictures/Gwen.png"
     },
 
     {
@@ -26,6 +26,6 @@
         "userName": "thederailed",
         "password": "Oculus",
         "favoriteRecipes":[2],
-        "profilePic":"../images/Profile Pictures/Jack.png"
+        "profilePic":"images/Profile Pictures/Jack.png"
     }
 ]
