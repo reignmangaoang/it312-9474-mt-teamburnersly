@@ -22,7 +22,16 @@ async function showAllRecipes(){
     await clearAllRecipes()
     showRecipeInList(allRecipes)
 }
-
+async function showAllRecipes2(){
+    var currentList = await getAllRecipes()
+    if (picked == "own"){
+        currentList = await getRecipeByUserId(currentList,userId)
+    } else if (picked == "saved"){
+        currentList = await getSavedRecipes(currentList,userId)
+    }
+    await clearAllRecipes()
+    showRecipeInList(currentList)
+}
 async function showRecipeByType(type){
     var currentList = await getAllRecipes()
     if (picked == "own"){
