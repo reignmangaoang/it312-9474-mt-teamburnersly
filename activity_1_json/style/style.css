@@ -478,6 +478,24 @@
         height: 25px;
         text-align: center;
     }
+    .form .recipeMenu{
+        margin: 0;
+        padding: 0;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .form .recipeMenu button{
+        height: 75px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .form .recipeMenu button img{
+        margin: 0;
+    }
     .formHeader{
         display: flex;
         flex-direction: row;
