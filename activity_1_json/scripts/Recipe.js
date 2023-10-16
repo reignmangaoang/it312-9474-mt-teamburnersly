@@ -10,6 +10,17 @@ async function initializeRecipe(id){
     var allTime = recipe.recipeDuration
     var timeText = "Prep Time: "+(allTime[0]/60)+" min | Cook time: "+(allTime[1]/60)+" | Total: "+((allTime[0]/60)+(allTime[1]/60))+" min"
     document.getElementsByClassName("recipeTime")[0].firstElementChild.nextElementSibling.innerHTML=timeText
-    
+    var ingredienlist = document.getElementsByClassName("ingredients")[0].firstElementChild.nextElementSibling
+    for (var i=0;i<recipe.ingredients.length;i++){
+        var ingredient = document.createElement("li")
+        ingredient.appendChild(document.createTextNode(recipe.ingredients[i]))
+        ingredienlist.appendChild(ingredient)
+    }
+    var steps = document.getElementsByClassName("steps")[0].firstElementChild.nextElementSibling
+    for (var i=0;i<recipe.steps.length;i++){
+        var step = document.createElement("li")
+        step.appendChild(document.createTextNode(recipe.steps[i]))
+        steps.appendChild(step)
+    }
 }
-initializeRecipe(2)
+initializeRecipe(sessionStorage.getItem("choosenRecipe"))
