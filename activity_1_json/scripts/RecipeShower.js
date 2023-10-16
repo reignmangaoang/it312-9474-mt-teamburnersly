@@ -188,10 +188,8 @@ function initializePage(id){
      })()
 }
 
-function goToRecipePage(id){
-    sessionStorage.setItem("choosenRecipe",id)
-    console.log("HELLO")
-    /*window.location.href = "recipePage.html"*/
+function goToAddRecipe(){
+    window.location.href = "addPage.html"
 }
 
 var userId = localStorage.getItem("User ID");
