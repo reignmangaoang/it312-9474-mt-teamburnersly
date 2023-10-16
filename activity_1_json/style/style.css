@@ -57,6 +57,7 @@
     }
     .logo > p{
         text-align: center;
+        margin-left: 10px;
     }
     header #profilePicture {
         border-radius: 50%;
