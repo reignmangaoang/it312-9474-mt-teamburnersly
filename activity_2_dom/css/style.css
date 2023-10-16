@@ -550,13 +550,13 @@ footer {
     top: 0;
     left: 0;
     width: 100%;
-    height: 380vh;
+    height: 256vh;
     display: grid;
-    grid-template-columns: repeat(10,1fr); 
-    grid-template-rows: repeat(10,2px);
+    grid-template-columns: repeat(20,1fr); 
+    grid-template-rows: repeat(20,1fr);
     background: #1d1d1d;
     filter: saturate(2);
-    overflow: visible;
+    overflow: hidden;
 }
 .colorBox{
     z-index: 4;
