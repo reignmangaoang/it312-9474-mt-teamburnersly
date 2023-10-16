@@ -11,17 +11,52 @@
 
         <!-- ======= index body ======= -->
         <body>
+            <header class="header">
+                <img src="images/Home.png">
+                <div class="logo">
+                    <img src="svgs/aglutow_red.svg">
+                    <p>Aglutow</p>
+                </div>
+                <div class="headerMenu">
+                    <img src="images/Profile Pictures/Alice.png" class="headerProfile" id="profilePicture" onclick="myFunction()">
+                    <div class="miniMenu" id="miniMenu">
+                        <a href="profile.html" title="first">
+                            <div class="buttonWithImage">
+                                <img src="images/Profile.png">
+                                <p>Profile</p>
+                            </div>
+                        </a>    
+                        <a title="last" onclick="logOut()" href="index.html" >
+                            <div class="buttonWithImage">
+                                <img src="images/LogOut.png">
+                                <p>Log Out</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </header>
             <div class="createRecipeForm">
                 <form>
                     <div class="form">
                         <p>Name of Recipe</p>
-                        <input type="text" id="username">
+                        <input type="text" id="recipeName">
                     </div>
                     <div class="form">
                         <p>Description</p>
-                        <input type="text" id="username">
+                        <input type="text" id="recipeDesc">
+                    </div>
+                    <div>
+                        <div class="formHeader">
+                            <p>Ingredients</p>
+                            <img src="images/Plus.png">
+                        </div>
+                        <ul id="Ingredients">
+                            <li><input type="text"></li>
+                        </ul>
                     </div>
                 </form>
             </div>
+            <script src="scripts/RecipeShower.js"></script>
+            <script src="scripts/HeaderFunctions.js"></script>
         </body>
 </html>
