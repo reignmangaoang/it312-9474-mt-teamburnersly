@@ -3,10 +3,26 @@ async function initializeRecipe(id){
     var chosenUser = await getUserById(recipe.recipeAuthor)
     document.getElementById("recImg").src = recipe.recipePicture
     document.getElementById("titleText").innerHTML = recipe.recipeName
-    document.getElementById("type").firstElementChild.nextElementSibling.innerHTML = recipe.recipeType
+    var type = recipe.recipeType
+    document.getElementById("type").firstElementChild.nextElementSibling.innerHTML = type
+    var icon = document.getElementById("type").firstElementChild
+    if(type=="Dessert"){
+        icon.src = "images/icons/dessert_icon.svg"
+    } else if (type=="Fish"){
+        icon.src = "images/icons/fish_icon.svg"
+    } else if (type=="Beef"){
+        icon.src = "images/icons/beef_icon.svg"
+    } else if (type=="Chciken"){
+        icon.src = "images/icons/chicken_icon.svg"
+    } else if (type=="Pork"){
+        icon.src = "images/icons/pork_icon.svg"
+    } else if (type=="Vegetable"){
+        icon.src = "images/icons/vegetable_icon.svg"
+    } 
     document.getElementsByClassName("recipeCreator")[0].firstElementChild.src = chosenUser.profilePic
     document.getElementsByClassName("recipeCreator")[0].firstElementChild.nextElementSibling.innerHTML = chosenUser.firstName+" "+chosenUser.lastName
     document.getElementsByClassName("recipeDesc")[0].firstElementChild.innerHTML = recipe.recipeDesc
+    
     var allTime = recipe.recipeDuration
     var timeText = "Prep Time: "+(allTime[0]/60)+" min | Cook time: "+(allTime[1]/60)+" | Total: "+((allTime[0]/60)+(allTime[1]/60))+" min"
     document.getElementsByClassName("recipeTime")[0].firstElementChild.nextElementSibling.innerHTML=timeText

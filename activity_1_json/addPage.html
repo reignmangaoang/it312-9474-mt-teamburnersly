@@ -45,26 +45,46 @@
                         <p>Description</p>
                         <input type="text" id="recipeDesc">
                     </div>
-                    <div>
+                    <div class="form">
+                        <p>Type</p>
+                        <p>Chosen Type:</p>
+                        <div class="recipeMenu" title="categories">
+                            <button title="first">
+                                <img src="images/icons/chicken_icon.svg" alt="Fish Icon"> Chicken</button>
+                            <button>
+                                <img src="images/icons/pork_icon.svg" alt="Fish Icon"> Pork</button>
+                            <button>
+                                <img src="images/icons/dessert_icon.svg" alt="Fish Icon"> Dessert</button>
+                            <button> 
+                                <img src="images/icons/beef_icon.svg" alt="Fish Icon"> Beef</button>
+                            <button>
+                                <img src="images/icons/vegetable_icon.svg" alt="Fish Icon"> Vegetable</button>
+                            <button title="last">
+                                <img src="images/icons/fish_icon.svg" alt="Fish Icon"> Fish </button>
+                        </div>
+                    </div>
+                    <div class="listAdder">
                         <div class="formHeader">
                             <p>Ingredients</p>
                             <img onclick="addIngredient()" src="images/Plus.png" >
                         </div>
                         <ul id="Ingredients">
-                            <li><input type="text"></li>
+                            <li><div class="inputObj"><input type="text"></div></li>
                         </ul>
                     </div>
-                    <div>
+                    <div class="listAdder">
                         <div class="formHeader">
                             <p>Steps</p>
                             <img onclick="addStep()" src="images/Plus.png" >
                         </div>
                         <ol id="Steps">
-                            <li><input type="text"></li>
+                            <li><div class="inputObj"><input type="text"></div></li>
                         </ol>
                     </div>
-                    <div>
-                        
+                    <div class="imageUploader">
+                        <p>Upload Recipe Image</p>
+                        <img id="prof">
+                        <input type="file" id="myfile" name="myfile" accept="image/*" onchange="a()">
                     </div>
                 </form>
             </div>
