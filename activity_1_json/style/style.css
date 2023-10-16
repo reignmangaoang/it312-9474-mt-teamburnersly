@@ -428,6 +428,24 @@
         width: 25px;
         height: 25px;
     }
+    .imageUploader img{
+        width: 400px;
+        height: 200px;
+        object-fit: cover;
+    }
+    .inputObj{
+        display: flex;
+        align-items: center;
+    }
+    .inputObj img{
+        width: 25px;
+        height: 25px;
+        margin-left: 10px;
+    }
+    .imageUploader{
+        display: flex;
+        flex-direction: column;
+    }
     form{
         display: flex;
         width: 100%;
