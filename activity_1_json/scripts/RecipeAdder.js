@@ -5,11 +5,14 @@ function addIngredient(){
     var trash = document.createElement("img")
     trash.src = ("images/Trash.png")
     trash.onclick = function(){
-        trash.parentElement.remove()
+        trash.parentElement.parentElement.remove()
     }
     input.setAttribute("type","text")
-    ingredient.appendChild(input)
-    ingredient.appendChild(trash)
+    var div = document.createElement("div")
+    div.setAttribute("class","inputObj")
+    div.appendChild(input)
+    div.appendChild(trash)
+    ingredient.appendChild(div)
     ingredienlist.appendChild(ingredient)
 }
 
@@ -20,10 +23,25 @@ function addStep(){
     var trash = document.createElement("img")
     trash.src = ("images/Trash.png")
     trash.onclick = function(){
-        trash.parentElement.remove()
+        trash.parentElement.parentElement.remove()
     }
     input.setAttribute("type","text")
-    ingredient.appendChild(input)
-    ingredient.appendChild(trash)
+    var div = document.createElement("div")
+    div.setAttribute("class","inputObj")
+    div.appendChild(input)
+    div.appendChild(trash)
+    ingredient.appendChild(div)
     ingredienlist.appendChild(ingredient)
+}
+
+function a(){
+    var file = document.getElementById("myfile").files[0]
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        document.getElementById("prof").src=reader.result
+    };
+    reader.onerror = function (error) {
+        console.log('Error: ', error);
+    };
 }
