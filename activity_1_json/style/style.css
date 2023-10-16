@@ -396,7 +396,8 @@
         background-color: aliceblue;
         border-radius: 25px;
         width: 500px;
-        height: 500px;
+        min-height: 500px;
+        height: auto;
         padding: 50px;
         box-sizing: border-box;
     }
@@ -413,6 +414,7 @@
         width: 100%;
         border-radius: 25px;
         height: 25px;
+        text-align: center;
     }
     .formHeader{
         display: flex;
