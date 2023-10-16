@@ -458,10 +458,40 @@
         background-color: aliceblue;
         border-radius: 25px;
         width: 500px;
-        height: 500px;
+        min-height: 500px;
+        height: auto;
         padding: 50px;
         box-sizing: border-box;
     }
     .createRecipeForm *{
         margin: 0;
+        margin-bottom: 5px;
+    }
+    .form{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+    .form input[type=text]{
+        width: 100%;
+        border-radius: 25px;
+        height: 25px;
+        text-align: center;
+    }
+    .formHeader{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .formHeader p{
+        width: 100%;
+    }
+    .formHeader img{
+        width: 25px;
+        height: 25px;
+    }
+    form{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
     }
