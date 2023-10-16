@@ -37,7 +37,8 @@
         padding: 0;
         margin: 0;
     }
-    /*Header*/
+
+    /* -- Header -- */
     header {
         width: 100%;
         background-color:aliceblue;
@@ -60,24 +61,21 @@
     }
     header #profilePicture {
         border-radius: 50%;
-        border-color: goldenrod;
-        border-style: solid;
-        border-width: 2px;
     }
     header img{
         height: 50px;
         float: left;
     }
+
+    /* -- Header Mini-Menu-- */
     .miniMenu{
         display: none;
         position: absolute;
-        width: 150px;
-        border-style: solid;
-        border-color: goldenrod;
-        top: 75px;
-        right: 0;
-        border-top: 0;
+        width: 250px;
+        top: 80px;
+        right: 20px;
         z-index: 2;
+        box-shadow: 5px 5px 10px #888888;
     }
     .miniMenu a{
         margin: 0;
@@ -85,14 +83,16 @@
         text-decoration: none;
         display: block;
         width: 100%;
-        background-color: aliceblue;
-        color: goldenrod;
+        background-color: var(--bgandtext-color-light);
+        color: var(--bgandtext-color-dark);
         justify-content: center;
     }
     .buttonWithImage img{
         height: 20px;
         width: 20px;
-    
+        margin-left: 10px;
+        margin-bottom: 10px;
+        margin-top: 10px;
     }
     .buttonWithImage{
         display: flex;
@@ -101,10 +101,12 @@
     .buttonWithImage p{
         margin: 0;
         margin-left: 5px;
+        font-family: IBM-Plex-Sans-Regular;
     }
     .show{
         display: block;
     }
+
     /*LOG IN BOX*/
     .LogInBox{
         background-color: aliceblue;
