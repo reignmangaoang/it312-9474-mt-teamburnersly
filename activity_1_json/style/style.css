@@ -385,4 +385,8 @@
         margin: 0;
         margin-left: 5px;
     }
+    .sandi{
+        display: flex;
+        flex-direction: column;
+    }
   
