@@ -23,7 +23,7 @@
     --primary-color: #F5393B;
     --primary-color-dark: #BE2C2E;
     --accent-color: #25567D;
-    --bgandtext-color-light: #F0F6FA;
+    --bgandtext-color-light: #F8F7F2;
     --bgandtext-color-dark: #1A1A1A;
 }
 
@@ -41,7 +41,7 @@
     /* -- Header -- */
     header {
         width: 100%;
-        background-color:aliceblue;
+        background-color:var(--bgandtext-color-light);
         height: 75px;
         display: flex;
         justify-content: center;
@@ -53,14 +53,13 @@
     }
     .logo{
         display: flex;
-        width: 100%;
+        width: 90%;
         justify-content: center;
         align-items: center;
     }
     .logo > p{
         text-align: center;
         margin-left: 10px;
-        font-size: 50px;
     }
     header #profilePicture {
         border-radius: 50%;
