@@ -32,24 +32,20 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: skyblue;
+        background-color: var(--primary-color);
         flex-direction: column;
         padding: 0;
         margin: 0;
     }
     /*Header*/
-    header{
+    header {
         width: 100%;
         background-color:aliceblue;
         height: 75px;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-bottom: goldenrod 3px;
-        border-top: 0;
-        border-left: 0;
-        border-right: 0;
-        border-style: solid;
+        margin-bottom: 10px;;
         box-sizing: border-box;
         padding-left: 20px;
         padding-right: 20px;
@@ -61,16 +57,16 @@
     }
     .logo > p{
         text-align: center;
-        margin-left: 10px ;
     }
-    header img{
-        height: 50px;
-    }
-    header #profilePicture{
+    header #profilePicture {
         border-radius: 50%;
         border-color: goldenrod;
         border-style: solid;
         border-width: 2px;
+    }
+    header img{
+        height: 50px;
+        float: left;
     }
     .miniMenu{
         display: none;
@@ -389,9 +385,5 @@
     .steps ol{
         margin: 0;
         margin-left: 5px;
-    }
-    .sandi{
-        display: flex;
-        flex-direction: column;
     }
   
